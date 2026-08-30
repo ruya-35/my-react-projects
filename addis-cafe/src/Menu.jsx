@@ -1,0 +1,85 @@
+const menu = [
+    {
+        id: 1,
+        name: "☕️ Buna",
+        price: 40,
+        description: "Traditional Ethiopian coffee",
+        category: "Drink"
+    },
+    {
+        id: 2,
+        name: "🍲 Shiro",
+        price: 150,
+        description: "Traditional Ethiopian chickpea stew",
+        category: "Main"
+    },
+    {
+        id: 3,
+        name: "🍝 Pasta",
+        price: 150,
+        description: "Classic Italian pasta dish",
+        category: "Main"
+    },
+    {
+        id: 4,
+        name: "🫖 Tea",
+        price: 40,
+        description: "Warm spiced tea",
+        category: "Drink"
+    },
+    {
+        id: 5,
+        name: "🍚 Rice",
+        price: 180,
+        description: "Steamed rice with mixed vegetables",
+        category: "Main"
+    },
+    { 
+        id: 6, 
+        name: "🍗 Doro Wat", 
+        price: 300, 
+        description: "Spicy Ethiopian chicken stew", 
+        category: "Main" 
+    },
+    { 
+        id: 7, 
+        name: "🥘 Firfir", 
+        price: 140, 
+        description: "Injera mixed with berbere sauce", 
+        category: "Main" 
+    },
+    { 
+        id: 8, 
+        name: "🥐 Baklava", 
+        price: 110, 
+        description: "Sweet layered pastry dessert", 
+        category: "Dessert" 
+    },
+    {
+        id: 9,
+        name: "🍰 Milifoni",
+        price: 150,
+        description: "Sweet pastry",
+        category: "Dessert"
+    }
+];
+
+
+import { MenuItem } from './MenuItem';
+
+export function Menu() {
+    return (
+    <div className='menu-grid'>
+    {menu.map((d) => (
+        <MenuItem
+        key={d.id}
+        name={d.name}
+        price={d.price}
+        description={d.description}
+        category={d.category}
+        />
+        ))}
+    </div>
+    );
+}
+
