@@ -1,84 +1,48 @@
-const menu = [
-    {
-        id: 1,
-        name: "☕️ Buna",
-        price: 40,
-        description: "Traditional Ethiopian coffee",
-        category: "Drink"
-    },
-    {
-        id: 2,
-        name: "🍲 Shiro",
-        price: 150,
-        description: "Traditional Ethiopian chickpea stew",
-        category: "Main"
-    },
-    {
-        id: 3,
-        name: "🍝 Pasta",
-        price: 150,
-        description: "Classic Italian pasta dish",
-        category: "Main"
-    },
-    {
-        id: 4,
-        name: "🫖 Tea",
-        price: 40,
-        description: "Warm spiced tea",
-        category: "Drink"
-    },
-    {
-        id: 5,
-        name: "🍚 Rice",
-        price: 180,
-        description: "Steamed rice with mixed vegetables",
-        category: "Main"
-    },
-    { 
-        id: 6, 
-        name: "🍗 Doro Wat", 
-        price: 300, 
-        description: "Spicy Ethiopian chicken stew", 
-        category: "Main" 
-    },
-    { 
-        id: 7, 
-        name: "🥘 Firfir", 
-        price: 140, 
-        description: "Injera mixed with berbere sauce", 
-        category: "Main" 
-    },
-    { 
-        id: 8, 
-        name: "🥐 Baklava", 
-        price: 110, 
-        description: "Sweet layered pastry dessert", 
-        category: "Dessert" 
-    },
-    {
-        id: 9,
-        name: "🍰 Milifoni",
-        price: 150,
-        description: "Sweet pastry",
-        category: "Dessert"
-    }
-];
+import { useState } from "react";
+import { menu } from "./data";
+import { MenuItem } from "./MenuItem";
+import { CategoryBar } from "./CatagoryBar";
+import { OrderForm } from "./OrderForm";
 
-
-import { MenuItem } from './MenuItem';
+const categories = ["All", "Main", "Drink", "Dessert"];
 
 export function Menu() {
+    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [total, setTotal] = useState(0);
+    
+    function handleAddToCart(price) {
+        setTotal(total + price);
+    }
+    const filteredMenu = selectedCategory === "All"
+    ? menu
+    : menu.filter((d) => d.category === selectedCategory);
+    
+
     return (
-    <div className='menu-grid'>
-    {menu.map((d) => (
-        <MenuItem
-        key={d.id}
-        name={d.name}
-        price={d.price}
-        description={d.description}
-        category={d.category}
+    <div>
+        <CategoryBar
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onSelectCategory={setSelectedCategory}
         />
-        ))}
+        
+        <h2>Total Order: {total} ETB</h2>
+        
+        <div className="menu-grid">
+            {filteredMenu.map((d) => (
+                <MenuItem
+                key={d.id}
+                name={d.name}
+                price={d.price}
+                description={d.description}
+                category={d.category}
+                onAddToCart={handleAddToCart}
+                />
+            ))}
+        </div>
+        
+        <hr />
+        <OrderForm />
     </div>
     );
 }
