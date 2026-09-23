@@ -15,7 +15,7 @@ const DishDetail = lazy(() => import("./DishDetail"));
 function Home() {
     return (
         <div className="home-page">
-            <h2>Welcome to Addis Café</h2>
+            <h2>Welcome to Addis Eats</h2>
             <p>Explore our menu and place your order online.</p>
         </div>
     );

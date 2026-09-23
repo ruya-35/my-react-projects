@@ -1,4 +1,4 @@
-const restaurantName = "Addis Café";
+const restaurantName = "Addis Eats";
 
 export function Header(){
     return(
