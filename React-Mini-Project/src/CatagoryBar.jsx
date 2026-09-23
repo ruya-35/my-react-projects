@@ -1,13 +1,13 @@
 export function CategoryBar({ categories, selectedCategory, onSelectCategory }) {
     return (
     <div className="category-bar">
-        {categories.map((cat) => (
+        {categories.map((item) => (
             <button
-            key={cat}
-            className={selectedCategory === cat ? "active" : ""}
-            onClick={() => onSelectCategory(cat)}
+            key={item}
+            className={selectedCategory === item ? "active" : ""}
+            onClick={() => onSelectCategory(item)}
             >
-            {cat}
+            {item}
         </button>
     ))}
     </div>
