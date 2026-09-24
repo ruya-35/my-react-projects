@@ -53,24 +53,7 @@ function Checkout() {
     );
 }
 
-function Login({ onLogin }) {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/menu";
 
-    const handleSignIn = () => {
-        onLogin();
-        navigate(from, { replace: true });
-    };
-
-    return (
-        <div className="login-page">
-            <h2>Sign In</h2>
-            <p>Please authenticate to access checkout.</p>
-            <button onClick={handleSignIn} className="login-btn">Login as Guest</button>
-        </div>
-    );
-}
 
 function NotFound() {
     return (
@@ -82,12 +65,9 @@ function NotFound() {
 }
 
 export default function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [cart, setCart] = useState([]);
 
-    const handleLogin = () => {
-        setIsAuthenticated(true);
-    };
+    
 
     const handleAddToCart = (dish) => {
         setCart((prevCart) => [...prevCart, dish]);
@@ -101,15 +81,7 @@ export default function App() {
                     <Route path="menu" element={<Menu onAddToCart={handleAddToCart} />} />
                     <Route path="menu/:id" element={<DishDetail />} />
                     <Route path="cart" element={<CartPage cart={cart} />} />
-                    <Route
-                        path="checkout"
-                        element={
-                            <RequireAuth isAuthenticated={isAuthenticated}>
-                                <Checkout />
-                            </RequireAuth>
-                        }
-                    />
-                    <Route path="login" element={<Login onLogin={handleLogin} />} />
+                    <Route path="checkout"  element={<Checkout />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

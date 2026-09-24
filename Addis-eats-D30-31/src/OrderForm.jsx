@@ -13,6 +13,9 @@ export function OrderForm() {
         const { name, value } = e.target;
         setForm({ ...form, [name]: value }); 
     }
+    function alertMsg(e){
+        alert`Your order is successfull`
+    }
     
     return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -47,8 +50,7 @@ export function OrderForm() {
             </select>
         </div>
 
-        <button>Pay with TeleBirr</button>
+        <button onChange={handleChange} onClick={alertMsg}>Pay with TeleBirr</button>
     </form>
     );
 }
-
