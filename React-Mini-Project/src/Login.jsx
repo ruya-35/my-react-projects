@@ -15,7 +15,7 @@ export function Login({ onLogin }) {
             navigate(from, { replace: true });
         }
     }
-
+function 
     return (
         <div className="login-page">
             <form onSubmit={handleSubmit}>
@@ -29,7 +29,7 @@ export function Login({ onLogin }) {
                         placeholder="Enter your name"
                     />
                 </div>
-                <button type="submit">Sign In</button>
+                <button type="submit" onClick={(handleSignIn)}>Sign In</button>
             </form>
         </div>
     );
