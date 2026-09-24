@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { CategoryBar } from "./CatagoryBar";
-import { DishList } from "./DishList";
+import DishList from "./DishList";
 import { loadDishes } from "./Api";
 
 const CATEGORIES = ["All", "Main", "Drink", "Dessert"];
 
-function Menu({ onAddToCart }) {
+function Menu() {
     const [searchParams, setSearchParams] = useSearchParams();
     const activeCategory = searchParams.get("category") || "All";
 
@@ -75,7 +75,7 @@ function Menu({ onAddToCart }) {
             {loading && <p className="loading-msg">Fetching menu items...</p>}
             {error && <p className="error-msg">Error: {error}</p>}
             {!loading && !error && (
-                <DishList dishes={dishes} onAddToCart={onAddToCart} />
+                <DishList dishes={dishes} />
             )}
         </div>
     );

@@ -1,44 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { useCartStore } from "./store/cartStore"; 
+import { useCartStore } from "./store/cartStore";
+import { Link } from "react-router-dom";
 
-function DishList() {
-    const [dishes, setDishes] = useState([]);
-    const [loading, setLoading] = useState(true);
-    
+export function DishList({ dishes }) {
     const addItem = useCartStore((state) => state.addItem);
-    
-    useEffect(() => {
-        fetch("/Dish.json") 
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error("Failed to load dishes");
-            }
-            return res.json();
-        })
-        .then((data) => {
-            setDishes(data);
-            setLoading(false);
-        })
-        .catch((err) => {
-            console.error("Error fetching dishes:", err);
-            setLoading(false);
-        });
-    }, []);
-    
-    if (loading) return <p>Loading menu...</p>;
-    
+
+    if (!dishes || dishes.length === 0) {
+        return <p className="loading-msg">No dishes found.</p>;
+    }
+
     return (
-    <div>
-        <h2>Menu</h2>
-        {dishes.map((dish) => (
-            <div key={dish.id} style={{ marginBottom: "10px" }}>
-                <span>{dish.name} - {dish.price} ETB</span>
-                <button onClick={() => addItem(dish)}>
-                    Add to Cart
-                </button>
-            </div>
-        ))}
-    </div>
+        <div className="menu-grid">
+            {dishes.map((dish) => {
+                const categoryClass = dish.category ? `menu-card ${dish.category.toLowerCase()}` : "menu-card";
+                
+                return (
+                    <div key={dish.id} className={categoryClass}>
+                        <Link to={`/menu/${dish.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                            <h3>{dish.name}</h3>
+                        </Link>
+                        <p>{dish.description}</p>
+                        <p><strong>{dish.price} ETB</strong></p>
+                        <button className="add-btn" onClick={() => addItem(dish)}>
+                            Add to Cart
+                        </button>
+                    </div>
+                );
+            })}
+        </div>
     );
 }
 

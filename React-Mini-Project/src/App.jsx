@@ -1,50 +1,62 @@
-import {useState,lazy,Suspense} from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Layout } from "./Layout";
-// import { Menu } from "./Menu";
-// import { DishDetail } from "./DishDetail";
 import { RequireAuth } from "./RequireAuth";
 import { OrderForm } from "./OrderForm";
-import { Login } from "./Login";
+import Login from "./Login";
 
+
+import { useCartStore } from "./store/cartStore";
+import { useUserStore } from "./store/userStore";
 
 const Menu = lazy(() => import("./Menu"));
 const DishDetail = lazy(() => import("./DishDetail"));
 
 function Home() {
     return (
-        <div className="home-page">
+        <div className="home-page" style={{ textAlign: "center", padding: "30px" }}>
             <h2>Welcome to Addis Eats</h2>
-            <p>Explore our menu and place your order online.</p>
+            <p>Explore our fresh menu and place your order online.</p>
         </div>
     );
 }
 
-function CartPage({ cart, onRemoveFromCart }) {
-    if (!cart || cart.length === 0) {
+function CartPage() {
+    const items = useCartStore((state) => state.items);
+    const removeItem = useCartStore((state) => state.removeItem);
+    const clear = useCartStore((state) => state.clear);
+
+    if (!items || items.length === 0) {
         return (
-            <div className="cart-page">
+            <div className="cart-page" style={{ textAlign: "center", padding: "20px" }}>
                 <h2>Your Shopping Cart</h2>
                 <p>No items added yet.</p>
             </div>
         );
     }
 
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    const total = items.reduce((sum, item) => sum + item.price, 0);
 
     return (
-        <div className="cart-page">
+        <div className="cart-page" style={{ maxWidth: "600px", margin: "20px auto" }}>
             <h2>Your Shopping Cart</h2>
             <ul className="cart-list">
-                {cart.map((item, index) => (
-                    <li key={index} className="cart-item">
-                        <strong>{item.name}</strong> - {item.price} ETB
-                        <button onClick={() => onRemoveFromCart(index)} className="remove-btn">Remove</button>
+                {items.map((item, index) => (
+                    <li key={`${item.id}-${index}`} className="cart-item">
+                        <span><strong>{item.name}</strong> - {item.price} ETB</span>
+                        <button onClick={() => removeItem(item.id)} className="remove-btn">Remove</button>
                     </li>
                 ))}
             </ul>
             <h3>Total: {total} ETB</h3>
+            <button 
+                className="add-btn" 
+                onClick={clear}
+                style={{ backgroundColor: "#dc3545", marginTop: "15px" }}
+            >
+                Clear Cart
+            </button>
         </div>
     );
 }
@@ -53,7 +65,6 @@ function Checkout() {
     return (
         <div className="checkout-page">
             <h2>Order Checkout</h2>
-            <p>Complete your payment here.</p>
             <OrderForm />
         </div>
     );
@@ -61,7 +72,7 @@ function Checkout() {
 
 function NotFound() {
     return (
-        <div className="not-found-page">
+        <div className="not-found-page" style={{ textAlign: "center", padding: "30px" }}>
             <h2>404 - Page Not Found</h2>
             <p>The page you are looking for does not exist.</p>
         </div>
@@ -69,37 +80,31 @@ function NotFound() {
 }
 
 export default function App() {
-    const [cart, setCart] = useState([]);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    const handleAddToCart = (dish) => {
-        setCart((prevCart) => [...prevCart, dish]);
-    };
-
-    const handleRemoveFromCart = (indexToRemove) => {
-        setCart((prevCart) => prevCart.filter((_, index) => index !== indexToRemove));
-    };
+    const user = useUserStore((state) => state.user);
+    const isAuthenticated = Boolean(user);
 
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="menu" element={<Menu onAddToCart={handleAddToCart} />} />
-                    <Route path="menu/:id" element={<DishDetail />} />
-                    <Route path="cart" element={<CartPage cart={cart} onRemoveFromCart={handleRemoveFromCart} />} />
-                    <Route 
-                        path="checkout"  
-                        element={
-                            <RequireAuth isAuthenticated={isAuthenticated}>
-                                <Checkout />
-                            </RequireAuth>
-                        } 
-                    />
-                    <Route path="login" element={<Login onLogin={() => setIsAuthenticated(true)} />} />
-                    <Route path="*" element={<NotFound />} />
-                </Route>
-            </Routes>
+            <Suspense fallback={<div className="loading-msg">Loading...</div>}>
+                <Routes>
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<Home />} />
+                        <Route path="menu" element={<Menu />} />
+                        <Route path="menu/:id" element={<DishDetail />} />
+                        <Route path="cart" element={<CartPage />} />
+                        <Route 
+                            path="checkout"  
+                            element={
+                                <RequireAuth isAuthenticated={isAuthenticated}>
+                                    <Checkout />
+                                </RequireAuth>
+                            } 
+                        />
+                        <Route path="login" element={<Login />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Route>
+                </Routes>
+            </Suspense>
         </BrowserRouter>
     );
 }
