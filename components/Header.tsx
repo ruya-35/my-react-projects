@@ -5,7 +5,8 @@ import { useCart } from "@/context/CartContext";
 import "./header.css";
 
 export default function Header() {
-  const { count } = useCart();
+  const { items } = useCart();
+  const itemCount = items ? items.length : 0;
 
   return (
     <header className="Header-Stayle">
@@ -16,7 +17,7 @@ export default function Header() {
       <nav className="nave-stayle">
         <Link href="/">Home</Link>
         <Link href="/menu">Menu</Link>
-        <Link href="/cart">Cart ({count})</Link>
+        <Link href="/cart">Cart ({itemCount})</Link>
       </nav>
     </header>
   );

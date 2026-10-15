@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "☕️ Buna",
+        "price": 40,
+        "description": "Traditional Ethiopian coffee",
+        "overview": "Freshly roasted organic beans brewed in a traditional jebena, offering a rich aroma and bold, authentic flavor.",
+        "category": "Drink"
+    },
+    {
+        "id": 2,
+        "name": "🍲 Shiro",
+        "price": 150,
+        "description": "Traditional Ethiopian chickpea stew",
+        "overview": "A smooth, slow-cooked chickpea flour stew spiced with berbere, garlic, and herbs, served hot with soft injera.",
+        "category": "Main"
+    },
+    {
+        "id": 3,
+        "name": "🍝 Pasta",
+        "price": 150,
+        "description": "Classic Italian pasta dish",
+        "overview": "Tossed in a savory homemade tomato sauce with mild Ethiopian spices and herbs for a comforting fusion dish.",
+        "category": "Main"
+    },
+    {
+        "id": 4,
+        "name": "🫖 Tea",
+        "price": 40,
+        "description": "Warm spiced tea",
+        "overview": "Steeped black tea infused with warm spices like cinnamon and cardamom, perfect for a cozy afternoon break.",
+        "category": "Drink"
+    },
+    {
+        "id": 5,
+        "name": "🍚 Rice",
+        "price": 180,
+        "description": "Steamed rice with mixed vegetables",
+        "overview": "Fluffy steamed rice stir-fried with fresh garden vegetables, light spices, and a touch of vegetable oil.",
+        "category": "Main"
+    },
+    { 
+        "id": 6, 
+        "name": "🍗 Doro Wat", 
+        "price": 300, 
+        "description": "Spicy Ethiopian chicken stew", 
+        "overview": "Ethiopia’s signature celebratory dish featuring tender chicken simmered in a deep, fiery berbere sauce with hard-boiled eggs.",
+        "category": "Main" 
+    },
+    { 
+        "id": 7, 
+        "name": "🥘 Firfir", 
+        "price": 140, 
+        "description": "Injera mixed with berbere sauce", 
+        "overview": "Shredded pieces of soft injera soaked in a rich, tangy berbere and spiced butter reduction.",
+        "category": "Main" 
+    },
+    { 
+        "id": 8, 
+        "name": "🥐 Baklava", 
+        "price": 110, 
+        "description": "Sweet layered pastry dessert",
+        "overview": "Crisp layers of flaky phyllo dough stuffed with chopped nuts and drenched in sweet honey syrup.", 
+        "category": "Dessert" 
+    },
+    {
+        "id": 9,
+        "name": "🍰 Milifoni",
+        "price": 150,
+        "description": "Sweet pastry",
+        "overview": "A delicate, multi-layered puff pastry filled with smooth pastry cream and dusted with powdered sugar.",
+        "category": "Dessert"
+    }
+]
