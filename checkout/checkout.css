@@ -1,0 +1,135 @@
+.checkout-page {
+  min-height: 70vh;
+  padding: 50px 6%;
+  background: #faf8f4;
+}
+
+.checkout-heading {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.checkout-heading h1,
+.checkout-message h1 {
+  margin: 10px 0;
+  color: #382719;
+  font-size: 36px;
+}
+
+.checkout-heading p:last-child {
+  color: #70675e;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 25px;
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.checkout-form,
+.checkout-summary,
+.checkout-message {
+  padding: 25px;
+  border: 1px solid #eadfd3;
+  border-radius: 10px;
+  background: white;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkout-form label {
+  color: #382719;
+  font-weight: 600;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d8cabc;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+  outline: 2px solid #c18a5b;
+  border-color: #8b4513;
+}
+
+.checkout-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #8b4513;
+  color: white;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.checkout-button:hover {
+  background: #62300d;
+}
+
+.checkout-summary h2 {
+  margin-top: 0;
+  color: #382719;
+}
+
+.checkout-summary-item,
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 0;
+}
+
+.checkout-summary-item {
+  border-bottom: 1px solid #eee5dc;
+}
+
+.checkout-total {
+  margin-top: 10px;
+  border-top: 2px solid #eadfd3;
+  color: #382719;
+}
+
+.checkout-note {
+  color: #70675e;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.checkout-message {
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.checkout-message p {
+  color: #70675e;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-heading h1,
+  .checkout-message h1 {
+    font-size: 28px;
+  }
+}

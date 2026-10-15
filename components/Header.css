@@ -1,0 +1,81 @@
+.Header-Stayle {
+  width: 100%;
+  min-height: 75px;
+  padding: 0 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eadfd3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  color: #8b4513;
+  font-size: 26px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: #c07835;
+}
+
+/* Navigation links on the right */
+.nave-stayle {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nave-stayle a {
+  color: #382719;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nave-stayle a:hover {
+  color: #8b4513;
+  transform: translateY(-2px);
+}
+
+/* Highlight the cart link */
+.nave-stayle a:last-child {
+  padding: 10px 16px;
+  border-radius: 7px;
+  background-color: #8b4513;
+  color: #ffffff;
+}
+
+.nave-stayle a:last-child:hover {
+  background-color: #62300d;
+}
+
+/* Responsive design for phones */
+@media (max-width: 600px) {
+  .Header-Stayle {
+    padding: 16px 5%;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nave-stayle {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .nave-stayle a {
+    font-size: 14px;
+  }
+}

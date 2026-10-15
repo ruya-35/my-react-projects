@@ -1,0 +1,41 @@
+.dish-not-found {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.dish-not-found h1 {
+    margin-bottom: 16px;
+}
+
+.dish-not-found p {
+    margin-bottom: 24px;
+    color: #666;
+}
+
+.add-to-cart-container {
+    margin-top: 20px;
+}
+
+.add-to-cart-button {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 7px;
+    background: #8b4513;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.add-to-cart-button:hover {
+    background: #62300d;
+}
+
+.cart-success-message {
+    margin-top: 12px;
+    color: #237a3b;
+    font-size: 14px;
+}

@@ -1,9 +1,17 @@
-<!-- BEGIN:nextjs-agent-rules -->
+first creat only the home page and layout link
+and in component crate the header and footer 
+then give css fot those footer and home page also for the header
 
-## This is NOT the Next.js you know
+Create the Ethiopian food data
+Define the TypeScript type for a dish.
+Create reusable food cards.
+Build the menu page and working category filters.
+Create individual dish detail pages.
+Build the shopping cart.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+create the types of dishe for taypeScribt form in types folder
+crate the dishe list in lib folder
+in DishCard.tsx we clasifay all the category of fod and priy=t all the info
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+creat menu page
+then we corract oure menu page have the catagory bare
